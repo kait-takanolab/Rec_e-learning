@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>wav再生</title>
+<script type="text/javascript"> 
+var sound2Embed = null; 
+function init() { 
+} 
+function sound2Play() { 
+if ( !sound2Embed ) { 
+sound2Embed = document.createElement("embed"); 
+sound2Embed.setAttribute("src", "http://tam-music.sub.jp/se/data/phrase/wave/soft-001.wav"); 
+sound2Embed.setAttribute("hidden", true); 
+sound2Embed.setAttribute("autostart", true); 
+} else sound2Stop(); 
+sound2Embed.removed = false; 
+document.body.appendChild(sound2Embed); 
+} 
+function sound2Stop() { 
+if ( sound2Embed && !sound2Embed.removed ) { 
+document.body.removeChild(sound2Embed); 
+sound2Embed.removed = true; 
+} 
+} 
+</script>
+</head>
+<body onload="init();">
+<input type="submit" onclick="sound2Play();" name="Play 2" value="Play 2"> 
+<input type="submit" onclick="sound2Stop();" name="Stop 2" value="Stop 2">
+</body>
+</html>
