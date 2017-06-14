@@ -14,7 +14,11 @@
     <div class="column is-5 is-offset-3">
 			<div class="notification">
 				<h1 class="title"> record tests</h1>
-			</div>
+      </div>
+			<article class="box media">
+        <div id="word"></div>
+      </article>
+			<button class="button  is-primary" id = "next">next</button>
 		  <button class="button  is-success" onclick="startRecording(this);">record</button>
 		  <button class="button is-danger" onclick="stopRecording(this);" disabled>stop</button>
 			<button class="button  is-primary" onclick="throwfile();">post</button>
@@ -25,6 +29,8 @@
 		  <!-- <h2>Log</h2> -->
 		  <pre id="log"></pre>
   <script>
+	var qword = ["zero","How are you"] //この配列に英文を追加する
+	var qindex = 1;
   function __log(e, data) {
     log.innerHTML += "\n" + e + " " + (data || '');
   }
@@ -148,6 +154,12 @@
 	// }
 
   window.onload = function init() {
+	  $("#next").click(function() {
+	    // $("#result").html('<i class="fa fa-close is-large">Incorrect</i>');
+	     console.log(qindex);
+	     $('#word').html('Question' + qindex + " : "+ qword[qindex] + '');
+	     qindex++;
+	  });
     try {
       // webkit shim
       window.AudioContext = window.AudioContext || window.webkitAudioContext;
