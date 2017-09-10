@@ -41,6 +41,7 @@
   var recorder;
   var formdata;
   var blobdata;
+  var sendurl;
 
   function startUserMedia(stream) {
     var input = audio_context.createMediaStreamSource(stream);
@@ -103,6 +104,7 @@
       hf.href = url;
       hf.download = new Date().toISOString() + '.wav';
       hf.innerHTML = hf.download;
+      sendurl=url;
       li.appendChild(au);
       li.appendChild(hf);
       recordingslist.appendChild(li);
@@ -113,6 +115,7 @@
 	 var fd = new FormData();
 		//fd.append('fname', 'test.wav');
 		fd.append('fname', blobdata);
+    fd.append('url', sendurl);
 		console.log(fd);
 		$.ajax({
     type: 'POST',
